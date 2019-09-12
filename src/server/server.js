@@ -4,11 +4,15 @@
 // License text available at https://opensource.org/licenses/MIT
 
 'use strict';
+require('dotenv').config()
 
 let loopback = require('loopback');
 let boot = require('loopback-boot');
-
+let bodyParser = require('body-parser')
 let app = module.exports = loopback();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.start = function () {
   // start the web server

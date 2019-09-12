@@ -4,13 +4,7 @@
     "connector": "memory"
   },
   "postgreDS": {
-    "host": "",
-    "port": 0,
-    "url": "",
-    "database": "",
-    "password": "",
     "name": "postgreDS",
-    "user": "",
     "connector": "postgresql"
   }
 }
