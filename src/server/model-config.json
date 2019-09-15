@@ -5,7 +5,8 @@
       "loopback/server/models",
       "../common/models",
       "./models",
-      "../models/company-info-model"
+      "../models/company-info-model",
+      "../models/faq-model"
     ],
     "mixins": [
       "loopback/common/mixins",
@@ -44,6 +45,19 @@
         "sharedMethods": {
           "*": false,
           "find": true
+        }
+      }
+    }
+  },
+  "FAQ": {
+    "dataSource": "postgreDS",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true,
+          "create": true
         }
       }
     }
