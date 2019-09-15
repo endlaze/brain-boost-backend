@@ -1,19 +1,16 @@
 {
-  "name": "CompanyInfo",
+  "name": "FAQ",
   "base": "PersistedModel",
-  "plural": "CompanyInfo",
+  "plural": "FAQ",
   "idInjection": false,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "mission_statement": {
+    "question": {
       "type": "string"
     },
-    "vision_statement": {
-      "type": "string"
-    },
-    "support_email": {
+    "answer": {
       "type": "string"
     }
   },

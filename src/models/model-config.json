@@ -16,5 +16,9 @@
   "CompanyInfo": {
     "dataSource": "postgreDS",
     "public": true
+  },
+  "FAQ": {
+    "dataSource": "postgreDS",
+    "public": true
   }
 }
