@@ -6,7 +6,8 @@
       "../common/models",
       "./models",
       "../models/company-info-model",
-      "../models/faq-model"
+      "../models/faq-model",
+      "../models/app-user-model"
     ],
     "mixins": [
       "loopback/common/mixins",
@@ -50,6 +51,19 @@
     }
   },
   "FAQ": {
+    "dataSource": "postgreDS",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true,
+          "create": true
+        }
+      }
+    }
+  },
+  "App_User": {
     "dataSource": "postgreDS",
     "public": true,
     "options": {
