@@ -21,7 +21,15 @@
     "dataSource": "postgreDS",
     "public": true
   },
-  "App_User": {
+  "app_user": {
+    "dataSource": "postgreDS",
+    "public": true
+  },
+  "stock_roles": {
+    "dataSource": "postgreDS",
+    "public": true
+  },
+  "stock_subroles": {
     "dataSource": "postgreDS",
     "public": true
   },

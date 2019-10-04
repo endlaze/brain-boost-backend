@@ -7,7 +7,9 @@
       "./models",
       "../models/company-info-model",
       "../models/faq-model",
-      "../models/app-user-model"
+      "../models/app-user-model",
+      "../models/stock-roles-model",
+      "../models/stock-sub-roles-model"
     ],
     "mixins": [
       "loopback/common/mixins",
@@ -15,28 +17,6 @@
       "../common/mixins",
       "./mixins"
     ]
-  },
-  "User": {
-    "dataSource": "db"
-  },
-  "AccessToken": {
-    "dataSource": "db",
-    "public": false
-  },
-  "ACL": {
-    "dataSource": "db",
-    "public": false
-  },
-  "RoleMapping": {
-    "dataSource": "db",
-    "public": false,
-    "options": {
-      "strictObjectIDCoercion": true
-    }
-  },
-  "Role": {
-    "dataSource": "db",
-    "public": false
   },
   "CompanyInfo": {
     "dataSource": "postgreDS",
@@ -63,15 +43,29 @@
       }
     }
   },
-  "App_User": {
+  "app_user": {
+    "dataSource": "postgreDS",
+    "public": true
+  },
+  "stock_roles": {
     "dataSource": "postgreDS",
     "public": true,
     "options": {
       "remoting": {
         "sharedMethods": {
-          "*": false,
-          "find": true,
-          "create": true
+          "*": true,
+          "find": true
+        }
+      }
+    }
+  },
+  "stock_subroles": {
+    "dataSource": "postgreDS",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false
         }
       }
     }
