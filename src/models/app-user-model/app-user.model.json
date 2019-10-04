@@ -1,0 +1,40 @@
+{
+  "name": "App_User",
+  "base": "PersistedModel",
+  "plural": "App_User",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "first_last_name": {
+      "type": "string"
+    },
+    "second_last_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

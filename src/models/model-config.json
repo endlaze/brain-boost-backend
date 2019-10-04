@@ -20,5 +20,14 @@
   "FAQ": {
     "dataSource": "postgreDS",
     "public": true
-  }
+  },
+  "App_User": {
+    "dataSource": "postgreDS",
+    "public": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
 }
