@@ -1,7 +1,5 @@
-exports.login = (req, res) => {
-  
-}
+const bcrypt = require('bcrypt');
 
-exports.register = (req, res) => {
-
+exports.comparePassword = (password, dbPassword) => {
+    return bcrypt.compareSync(password, dbPassword);
 }
