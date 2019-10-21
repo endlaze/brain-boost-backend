@@ -19,25 +19,36 @@
       "./mixins"
     ]
   },
-  "User": {
-    "dataSource": "db"
-  },
-  "AccessToken": {
-    "dataSource": "db",
-    "public": false
-  },
-  "ACL": {
-    "dataSource": "db",
-    "public": false
-  },
-  "RoleMapping": {
-    "dataSource": "db",
-    "public": false,
+  "CompanyInfo": {
+    "dataSource": "postgreDS",
+    "public": true,
     "options": {
-      "strictObjectIDCoercion": true
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true
+        }
+      }
+    }
+  },
+  "FAQ": {
+    "dataSource": "postgreDS",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true,
+          "create": true
+        }
+      }
     }
   },
   "reminders": {
+    "dataSource": "postgreDS",
+    "public": true
+  },
+  "app_user": {
     "dataSource": "postgreDS",
     "public": true
   },
@@ -47,8 +58,19 @@
     "options": {
       "remoting": {
         "sharedMethods": {
-          "*": false,
+          "*": true,
           "find": true
+        }
+      }
+    }
+  },
+  "stock_subroles": {
+    "dataSource": "postgreDS",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false
         }
       }
     }

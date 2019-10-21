@@ -1,8 +1,10 @@
 let contactController = require('../../controllers/contact.controller')
+let cors = require('cors')
 
 module.exports = (server) => {
-  let root = '/contact'
+  let root = '/api/contact'
   let router = server.loopback.Router();
-  router.post(root + '/question', contactController.sendQuestion)
+  router.options('/', cors())
+  router.post(root + '/question', cors(), contactController.sendQuestion)
   server.use(router)
 }
