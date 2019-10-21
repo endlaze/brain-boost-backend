@@ -5,7 +5,12 @@
       "loopback/server/models",
       "../common/models",
       "./models",
-      "../models/company-info-model"
+      "../models/company-info-model",
+      "../models/faq-model",
+      "../models/app-user-model",
+      "../models/stock-roles-model",
+      "../models/reminders-model",
+      "../models/stock-sub-roles-model"
     ],
     "mixins": [
       "loopback/common/mixins",
@@ -32,11 +37,11 @@
       "strictObjectIDCoercion": true
     }
   },
-  "Role": {
-    "dataSource": "db",
-    "public": false
+  "reminders": {
+    "dataSource": "postgreDS",
+    "public": true
   },
-  "CompanyInfo": {
+  "stock_subroles": {
     "dataSource": "postgreDS",
     "public": true,
     "options": {

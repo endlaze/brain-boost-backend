@@ -1,0 +1,53 @@
+{
+  "name": "reminders",
+  "base": "PersistedModel",
+  "plural": "Reminder",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+
+    "id":
+    {
+      "type": "integer"
+    },
+    "name":
+    {
+      "type": "string"
+    },
+    "description":
+    {
+      "type": "string"
+    },
+    "active":
+    {
+      "type": "boolean"
+    },
+    "all_day":
+    {
+      "type": "boolean"
+    },
+    "days":
+    {
+      "type": "array"
+    },
+    "start_date":
+    {
+      "type": "timestamp"
+    },
+    "end_date":
+    {
+      "type": "timestamp"
+    },
+    "last_modification":
+    {
+      "type": "timestamp"
+    }
+
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
