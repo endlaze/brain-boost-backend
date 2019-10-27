@@ -9,11 +9,11 @@ module.exports = function (AppUser) {
   // Create Reminder
   AppUser.createReminder = (req, callback) =>
   {
-    let {id, name, description, active, all_day, days, start_date, en_date, last_modification} = req.body
+    let {idUser, active, title, description, reminderTime} = req.body
     let ds = AppUser.dataSource;
-    let sql = 'select create_reminder($1, $2, $3, $4, $5, $6, $7, $8, $9)';
+    let sql = 'select create_reminder($1, $2, $3, $4, $5)';
 
-    ds.connector.execute(sql, [id, name, description, active, all_day, days, start_date, en_date, last_modification], (err, data) => {
+    ds.connector.execute(sql, [idUser, active, title, description, reminderTime], (err, data) => {
 
     if (err) { return }
 
@@ -33,11 +33,11 @@ module.exports = function (AppUser) {
   // Edit Reminder
   AppUser.editReminder = (req, callback) =>
   {
-    let {id, id_reminder, name, description, active, all_day, days, start_date, en_date, last_modification} = req.body
+    let {id, idUser, description, active, title, reminderTime} = req.body
     let ds = AppUser.dataSource;
-    let sql = 'select edit_reminder($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)';
+    let sql = 'select edit_reminder($1, $2, $3, $4, $5, $6)';
 
-    ds.connector.execute(sql, [id, id_reminder, name, description, active, all_day, days, start_date, en_date, last_modification], (err, data) => {
+    ds.connector.execute(sql, [idUser, id, active, title, description, reminderTime], (err, data) => {
 
     if (err) { return }
 
@@ -56,11 +56,11 @@ module.exports = function (AppUser) {
   // Delete reminder
   AppUser.deleteReminder = (req, callback) =>
   {
-    let {id, id_reminder} = req.body
+    let {id, idUser} = req.body
     let ds = AppUser.dataSource;
     let sql = 'select delete_reminder($1, $2)';
 
-    ds.connector.execute(sql, [id, id_reminder], (err, data) => {
+    ds.connector.execute(sql, [id, idUser], (err, data) => {
 
     if (err) { return }
 
@@ -74,6 +74,76 @@ module.exports = function (AppUser) {
     http: { path: '/delete', verb: 'post' },
     returns: { arg: 'message', type: 'string' },
   })
+
+  // Cancel reminder (edit active to false)
+  AppUser.cancelReminder = (req, callback) =>
+  {
+    let {id, idUser} = req.body
+    let ds = AppUser.dataSource;
+    let sql = 'select cancel_reminder($1, $2)';
+
+    ds.connector.execute(sql, [id, idUser], (err, data) => {
+
+    if (err) { return }
+
+  })
+
+  callback(null, 'test')
+  }
+
+  AppUser.remoteMethod('cancelReminder', {
+    accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
+    http: { path: '/cancel', verb: 'post' },
+    returns: { arg: 'message', type: 'string' },
+  })
+
+  // Active reminder (edit active to true)
+  AppUser.activeReminder = (req, callback) =>
+  {
+    let {id, idUser} = req.body
+    let ds = AppUser.dataSource;
+    let sql = 'select active_reminder($1, $2)';
+
+    ds.connector.execute(sql, [id, idUser], (err, data) => {
+
+    if (err) { return }
+
+  })
+
+  callback(null, 'test')
+  }
+
+  AppUser.remoteMethod('activeReminder', {
+    accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
+    http: { path: '/active', verb: 'post' },
+    returns: { arg: 'message', type: 'string' },
+  })
+
+  // Get all the reminders of an specific user
+  // AppUser.eachReminder = (req, callback) =>
+  // {
+  //   let {idUser} = req.body
+  //   let ds = AppUser.dataSource;
+  //   let sql = 'select each_reminder($1)';
+  //   let callbackMsg = {};
+  //
+  //   ds.connector.execute(sql, [idUser], (err, data) => {
+  //
+  //   if (err) { return }
+  //   else {
+  //     callbackMsg = data;
+  //   }
+  //
+  // })
+  //
+  // callback(callbackMsg)
+  // }
+  //
+  // AppUser.remoteMethod('eachReminder', {
+  //   accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
+  //   http: { path: '/each', verb: 'get' },
+  //   returns: { arg: 'message', type: 'string' },
+  // })
 
 
 };

@@ -12,11 +12,7 @@
     {
       "type": "integer"
     },
-    "name":
-    {
-      "type": "string"
-    },
-    "description":
+    "idUser":
     {
       "type": "string"
     },
@@ -24,25 +20,17 @@
     {
       "type": "boolean"
     },
-    "all_day":
+    "title":
     {
-      "type": "boolean"
+      "type": "string"
     },
-    "days":
+    "description":
+    {
+      "type": "string"
+    },
+    "reminderTime":
     {
       "type": "array"
-    },
-    "start_date":
-    {
-      "type": "timestamp"
-    },
-    "end_date":
-    {
-      "type": "timestamp"
-    },
-    "last_modification":
-    {
-      "type": "timestamp"
     }
 
   },
