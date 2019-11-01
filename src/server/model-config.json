@@ -45,7 +45,14 @@
   },
   "app_user": {
     "dataSource": "postgreDS",
-    "public": true
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": true
+        }
+      }
+    }
   },
   "stock_roles": {
     "dataSource": "postgreDS",

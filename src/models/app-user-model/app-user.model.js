@@ -73,4 +73,85 @@ module.exports = function (AppUser) {
     http: { path: '/auth', verb: 'post' },
     returns: { arg: 'response', type: 'any' },
   })
+
+  AppUser.getRoles = (req, callback) => {
+    let { user_id } = req.body
+    let ds = AppUser.dataSource
+
+    let sql = 'select * from get_user_role($1)'
+    ds.connector.execute(sql, [user_id], (err, role) => {
+
+      let rolesXSubroles = {
+        user_role: role.pop()
+      }
+
+      if (err) { return }
+
+      let subrolesSQL = "select * from get_user_subroles($1)"
+      ds.connector.execute(subrolesSQL, [user_id], (err, subroles) => {
+        if (err) { return }
+        rolesXSubroles['user_subroles'] = subroles
+        callback(null, rolesXSubroles)
+      })
+    })
+  }
+
+  AppUser.remoteMethod('getRoles', {
+    accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
+    http: { path: '/roles', verb: 'post' },
+    returns: { arg: 'response', type: 'any' },
+  })
+
+  AppUser.getUserInfo = (req, callback) => {
+    let { user_id } = req.body
+    let ds = AppUser.dataSource
+
+    let sql = 'select * from get_user_info($1)'
+
+    ds.connector.execute(sql, [user_id], (err, user_info) => {
+      if (err) { return }
+      callback(null, user_info.pop())
+    });
+  }
+
+  AppUser.remoteMethod('getUserInfo', {
+    accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
+    http: { path: '/get_info', verb: 'post' },
+    returns: { arg: 'response', type: 'any' },
+  })
+
+  AppUser.createRelatedAccount = (req, callback) => {
+    let { main_user_id, liked_user_id, user_token } = req.body
+    let ds = AppUser.dataSource
+
+    let sql = 'select * from link_accounts($1, $2, $3)'
+
+    ds.connector.execute(sql, [main_user_id, liked_user_id, user_token], (err, resp) => {
+      if (err) { return }
+      callback(null, resp.pop())
+    });
+  }
+
+  AppUser.remoteMethod('createRelatedAccount', {
+    accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
+    http: { path: '/link_acc', verb: 'post' },
+    returns: { arg: 'response', type: 'any' },
+  })
+
+  AppUser.getRelatedAccs = (req, callback) => {
+    let { user_id, current_user_role } = req.body
+    let ds = AppUser.dataSource
+    let func = (current_user_role === 1) ? 'get_rel_medcare' : 'get_related_patients'
+    let sql = `select * from ${func}($1)`
+    ds.connector.execute(sql, [user_id], (err, resp) => {
+      if (err) { return }
+      callback(null, resp)
+    });
+  }
+
+  AppUser.remoteMethod('getRelatedAccs', {
+    accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
+    http: { path: '/get_rel_acc', verb: 'post' },
+    returns: { arg: 'response', type: 'any' },
+  })
 };
