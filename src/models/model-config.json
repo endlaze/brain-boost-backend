@@ -33,6 +33,10 @@
     "dataSource": "postgreDS",
     "public": true
   },
+  "Scores": {
+    "dataSource": "postgreDS",
+    "public": true
+  },
   "properties": {},
   "validations": [],
   "relations": {},

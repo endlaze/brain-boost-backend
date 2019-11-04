@@ -1,0 +1,29 @@
+{
+  "name": "scores",
+  "base": "PersistedModel",
+  "plural": "scores",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "idUser": {
+      "type": "string"
+    },
+    "idStage": {
+      "type": "number"
+    },
+    "times": {
+      "type": [
+        "number"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

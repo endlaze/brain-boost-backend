@@ -9,7 +9,8 @@
       "../models/faq-model",
       "../models/app-user-model",
       "../models/stock-roles-model",
-      "../models/stock-sub-roles-model"
+      "../models/stock-sub-roles-model",
+      "../models/scores-model"
     ],
     "mixins": [
       "loopback/common/mixins",
@@ -76,5 +77,9 @@
         }
       }
     }
+  },
+  "Scores": {
+    "dataSource": "postgreDS",
+    "public": true
   }
 }
