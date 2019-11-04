@@ -78,7 +78,7 @@
       }
     }
   },
-  "Scores": {
+  "scores": {
     "dataSource": "postgreDS",
     "public": true
   }

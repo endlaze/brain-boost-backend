@@ -19,6 +19,6 @@ module.exports = function (Scores) {
     Scores.remoteMethod('createScore', {
         accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
         http: { path: '/create', verb: 'post' },
-        return: { arg: 'message', type: 'string' },
+        returns: { arg: 'message', type: 'string' },
     })
 }
