@@ -154,4 +154,25 @@ module.exports = function (AppUser) {
     http: { path: '/get_rel_acc', verb: 'post' },
     returns: { arg: 'response', type: 'any' },
   })
+  
+  //Reset password
+
+  AppUser.resetPassword = (req, callback) => {
+    let { id, password, verification_code } = req.body
+    password = bcrypt.hashSync(password, 10)
+
+    let ds = AppUser.dataSource
+    let sql = 'select reset_password($1, $2, $3)'
+    ds.connector.execute(sql, [id, password, verification_code], (err, data) => {
+
+      if (err) { return }
+    })
+    callback(null, 'test')
+  }
+
+  AppUser.remoteMethod('resetPassword', {
+    accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
+    http: { path: '/resetPassword', verb: 'post' },
+    returns: { arg: 'response', type: 'any' },
+  })
 };
