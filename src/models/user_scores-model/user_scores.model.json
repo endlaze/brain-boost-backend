@@ -1,5 +1,5 @@
 {
-  "name": "scores",
+  "name": "user_scores",
   "base": "PersistedModel",
   "plural": "scores",
   "idInjection": false,
@@ -8,7 +8,8 @@
   },
   "properties": {
     "id": {
-      "type": "number"
+      "type": "number",
+      "id": true
     },
     "idUser": {
       "type": "string"

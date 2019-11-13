@@ -10,7 +10,7 @@
       "../models/app-user-model",
       "../models/stock-roles-model",
       "../models/stock-sub-roles-model",
-      "../models/scores-model"
+      "../models/user_scores-model"
     ],
     "mixins": [
       "loopback/common/mixins",
@@ -78,8 +78,15 @@
       }
     }
   },
-  "scores": {
+  "user_scores": {
     "dataSource": "postgreDS",
-    "public": true
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": true
+        }  
+      }
+    }
   }
 }

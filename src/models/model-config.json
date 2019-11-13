@@ -33,7 +33,7 @@
     "dataSource": "postgreDS",
     "public": true
   },
-  "scores": {
+  "user_scores": {
     "dataSource": "postgreDS",
     "public": true
   },
