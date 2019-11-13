@@ -44,7 +44,7 @@
       }
     }
   },
-  "reminders": {
+  "user_reminders": {
     "dataSource": "postgreDS",
     "public": true
   },

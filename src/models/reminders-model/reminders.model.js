@@ -102,6 +102,7 @@ module.exports = function (AppUser) {
   {
     let {id, idUser} = req.body
     let ds = AppUser.dataSource;
+
     let sql = 'select active_reminder($1, $2)';
 
     ds.connector.execute(sql, [id, idUser], (err, data) => {
@@ -116,34 +117,33 @@ module.exports = function (AppUser) {
   AppUser.remoteMethod('activeReminder', {
     accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
     http: { path: '/active', verb: 'post' },
-    returns: { arg: 'message', type: 'string' },
+    returns: { arg: 'status', type: 'string' },
   })
 
   // Get all the reminders of an specific user
-  // AppUser.eachReminder = (req, callback) =>
-  // {
-  //   let {idUser} = req.body
-  //   let ds = AppUser.dataSource;
-  //   let sql = 'select each_reminder($1)';
-  //   let callbackMsg = {};
-  //
-  //   ds.connector.execute(sql, [idUser], (err, data) => {
-  //
-  //   if (err) { return }
-  //   else {
-  //     callbackMsg = data;
-  //   }
-  //
-  // })
-  //
-  // callback(callbackMsg)
-  // }
-  //
-  // AppUser.remoteMethod('eachReminder', {
-  //   accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
-  //   http: { path: '/each', verb: 'get' },
-  //   returns: { arg: 'message', type: 'string' },
-  // })
+  AppUser.eachReminder = (req, callback) =>
+  {
+    let {idUser} = req.body;
+    let ds = AppUser.dataSource;
+    // let sql = 'select each_reminder($1)';
+    let sql = "select each_reminder($1)"
+    let callbackMsg;
+  
+    ds.connector.execute(sql, [idUser], (err, data) => {
+      console.log(data[0].each_reminder)
+      callbackMsg = data[0].each_reminder;
+      callback(null, callbackMsg)
+  
+  })
+  
+  
+  }
+  
+  AppUser.remoteMethod('eachReminder', {
+    accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
+    http: { path: '/each', verb: 'get' },
+    returns: { arg: 'response', type: 'any' },
+  })
 
 
 };

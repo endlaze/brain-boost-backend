@@ -1,5 +1,5 @@
 {
-  "name": "reminders",
+  "name": "user_reminders",
   "base": "PersistedModel",
   "plural": "Reminder",
   "idInjection": false,
@@ -10,7 +10,8 @@
 
     "id":
     {
-      "type": "integer"
+      "type": "number",
+      "id": true
     },
     "idUser":
     {
