@@ -175,4 +175,20 @@ module.exports = function (AppUser) {
     http: { path: '/resetPassword', verb: 'post' },
     returns: { arg: 'response', type: 'any' },
   })
+  
+  AppUser.getEmail = (req, callback) => {
+    let {id} = req.body
+    let ds = AppUser.dataSource
+    let sql = 'select get_email($1)'
+    ds.connector.execute(sql, [id], (err, data) => {
+      callback(null, data)
+    })
+    
+  }
+
+  AppUser.remoteMethod('getEmail', {
+    accepts: { arg: 'req', type: 'any', 'http': { source: 'req' } },
+    http: { path: '/get_email', verb: 'post' },
+    returns: { arg: 'result', type: 'object' },
+  })
 };
