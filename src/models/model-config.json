@@ -37,6 +37,10 @@
     "dataSource": "postgreDS",
     "public": true
   },
+  "icap": {
+    "dataSource": "postgreDS",
+    "public": true
+  },
   "properties": {},
   "validations": [],
   "relations": {},

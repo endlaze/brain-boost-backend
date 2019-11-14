@@ -10,7 +10,9 @@
       "../models/app-user-model",
       "../models/stock-roles-model",
       "../models/reminders-model",
-      "../models/stock-sub-roles-model"
+      "../models/stock-sub-roles-model",
+      "../models/company-info-model",
+      "../models/icap-model"
     ],
     "mixins": [
       "loopback/common/mixins",
@@ -45,6 +47,10 @@
     }
   },
   "user_reminders": {
+    "dataSource": "postgreDS",
+    "public": true
+  },
+  "icap": {
     "dataSource": "postgreDS",
     "public": true
   },

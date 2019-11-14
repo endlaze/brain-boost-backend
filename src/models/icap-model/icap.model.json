@@ -1,0 +1,30 @@
+{
+  "name": "icap",
+  "base": "PersistedModel",
+  "plural": "icap",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+
+    "id":
+    {
+      "type": "number",
+      "id": true
+    },
+    "idUser":
+    {
+      "type": "string"
+    },
+    "information":
+    {
+      "type": "object"
+    }
+
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
